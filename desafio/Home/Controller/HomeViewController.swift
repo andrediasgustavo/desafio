@@ -10,7 +10,6 @@ final class HomeViewController: UIViewController {
         view.contentInset = .init(top: 0, left: 0, bottom: 0, right: 0)
         view.allowsSelection = false
         view.dataSource = self
-        view.delegate = self
         view.separatorStyle = .singleLine
         view.backgroundColor = .white
         view.register(ComicCell.self, forCellReuseIdentifier: "ComicCell")
@@ -26,7 +25,11 @@ final class HomeViewController: UIViewController {
     
     private var bottomLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        
+        label.font = .systemFont(ofSize: 12.0)
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        label.textColor = UIColor.black
+        label.sizeToFit()
         return label
     }()
     
@@ -57,6 +60,7 @@ final class HomeViewController: UIViewController {
         self.view.addSubview(tableView)
         self.view.addSubview(bottomLabel)
         self.view.addSubview(activityIndicator)
+        self.navigationItem.title = "Marvel Comics"
         self.setupConstraints()
     }
        
@@ -69,7 +73,7 @@ final class HomeViewController: UIViewController {
             make.top.equalToSuperview().offset(16.0)
             make.leading.equalToSuperview().offset(16.0)
             make.trailing.equalToSuperview().offset(16.0)
-            make.bottom.equalToSuperview().offset(40.0)
+            make.bottom.equalToSuperview().inset(40.0)
         }
         
         self.bottomLabel.snp.makeConstraints { make in
@@ -97,13 +101,13 @@ final class HomeViewController: UIViewController {
     }
 }
 
-extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.list.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 116
+         return 130
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
