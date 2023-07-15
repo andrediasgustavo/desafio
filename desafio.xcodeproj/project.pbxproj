@@ -105,16 +105,11 @@
 		25D16DB22A60B68D00B585E1 /* desafio */ = {
 			isa = PBXGroup;
 			children = (
-				25D16DB32A60B68D00B585E1 /* AppDelegate.swift */,
-				25D16DB52A60B68D00B585E1 /* SceneDelegate.swift */,
-				25D16DB72A60B68D00B585E1 /* ViewController.swift */,
-				25D16DB92A60B68D00B585E1 /* Main.storyboard */,
-				25D16DBC2A60B69000B585E1 /* Assets.xcassets */,
-				25D16DBE2A60B69000B585E1 /* LaunchScreen.storyboard */,
-				25D16DC12A60B69000B585E1 /* Info.plist */,
-				25D16DE32A60C53800B585E1 /* API.swift */,
-				250BB5212A61B355002C4113 /* ComicItem.swift */,
-				250BB5232A61B38D002C4113 /* ComicCell.swift */,
+				7385CE902A63121E00475DD8 /* Coordinators */,
+				7385CE8D2A63120500475DD8 /* Home */,
+				7385CE932A63127F00475DD8 /* Models */,
+				7385CE952A63128E00475DD8 /* Network */,
+				7385CE922A63124200475DD8 /* Supporting Files */,
 			);
 			path = desafio;
 			sourceTree = "<group>";
@@ -134,6 +129,83 @@
 				25D16DD62A60B69100B585E1 /* desafioUITestsLaunchTests.swift */,
 			);
 			path = desafioUITests;
+			sourceTree = "<group>";
+		};
+		7385CE8C2A6311F800475DD8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				25D16DB72A60B68D00B585E1 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7385CE8D2A63120500475DD8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7385CE8F2A63121800475DD8 /* View */,
+				7385CE8E2A63120F00475DD8 /* ViewModel */,
+				7385CE8C2A6311F800475DD8 /* Controller */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7385CE8E2A63120F00475DD8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7385CE8F2A63121800475DD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				250BB5232A61B38D002C4113 /* ComicCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7385CE902A63121E00475DD8 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		7385CE922A63124200475DD8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				25D16DB92A60B68D00B585E1 /* Main.storyboard */,
+				25D16DBC2A60B69000B585E1 /* Assets.xcassets */,
+				25D16DC12A60B69000B585E1 /* Info.plist */,
+				25D16DBE2A60B69000B585E1 /* LaunchScreen.storyboard */,
+				25D16DB32A60B68D00B585E1 /* AppDelegate.swift */,
+				25D16DB52A60B68D00B585E1 /* SceneDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7385CE932A63127F00475DD8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7385CE942A63128300475DD8 /* Home */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7385CE942A63128300475DD8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				250BB5212A61B355002C4113 /* ComicItem.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		7385CE952A63128E00475DD8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				25D16DE32A60C53800B585E1 /* API.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -452,12 +524,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = desafio/Info.plist;
+				INFOPLIST_FILE = "desafio/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -482,12 +555,13 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = desafio/Info.plist;
+				INFOPLIST_FILE = "desafio/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
