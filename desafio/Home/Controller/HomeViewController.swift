@@ -1,7 +1,7 @@
 import UIKit
 import SnapKit
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: BaseVC<HomeViewModel> {
     
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
@@ -16,13 +16,6 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
-    private var activityIndicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(frame: .zero)
-        view.style = .large
-        view.color = .gray
-        return view
-    }()
-    
     private var bottomLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.font = .systemFont(ofSize: 12.0)
@@ -34,7 +27,6 @@ final class HomeViewController: UIViewController {
     }()
     
     var list: [ComicItem] = []
-    private var viewModel: HomeViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,31 +34,21 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setupView()
         getData()
     }
     
-    public init(viewModel: HomeViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupView() {
+    override func setupView() {
         self.view.backgroundColor = .white
         self.view.addSubview(tableView)
         self.view.addSubview(bottomLabel)
-        self.view.addSubview(activityIndicator)
+        self.view.addSubview(activityLoadIndicator)
         self.navigationItem.title = "Marvel Comics"
         self.setupConstraints()
     }
        
-    private func setupConstraints() {
+    override func setupConstraints() {
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityLoadIndicator.translatesAutoresizingMaskIntoConstraints = false
         bottomLabel.translatesAutoresizingMaskIntoConstraints = false
         
         self.tableView.snp.makeConstraints { make in
@@ -81,7 +63,7 @@ final class HomeViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
         
-        self.activityIndicator.snp.makeConstraints { make in
+        self.activityLoadIndicator.snp.makeConstraints { make in
             make.height.equalTo(50)
             make.width.equalTo(50)
             make.centerX.equalToSuperview()

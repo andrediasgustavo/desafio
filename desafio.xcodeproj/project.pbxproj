@@ -23,6 +23,7 @@
 		7385CE9D2A631A8200475DD8 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */; };
 		7385CE9F2A631B2200475DD8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE9E2A631B2200475DD8 /* HomeViewModel.swift */; };
 		73DF50042A6339B200C3B710 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 73DF50032A6339B200C3B710 /* Kingfisher */; };
+		73DF50072A633C7500C3B710 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF50062A633C7500C3B710 /* BaseVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		7385CE992A631A5E00475DD8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		7385CE9E2A631B2200475DD8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		73DF50062A633C7500C3B710 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 		7385CE922A63124200475DD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				73DF50052A633C5F00C3B710 /* Helpers */,
 				25D16DBC2A60B69000B585E1 /* Assets.xcassets */,
 				25D16DC12A60B69000B585E1 /* Info.plist */,
 				25D16DBE2A60B69000B585E1 /* LaunchScreen.storyboard */,
@@ -224,6 +227,14 @@
 				7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		73DF50052A633C5F00C3B710 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				73DF50062A633C7500C3B710 /* BaseVC.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +384,7 @@
 				7385CE9D2A631A8200475DD8 /* HomeCoordinator.swift in Sources */,
 				25D16DB62A60B68D00B585E1 /* SceneDelegate.swift in Sources */,
 				7385CE9A2A631A5E00475DD8 /* AppCoordinator.swift in Sources */,
+				73DF50072A633C7500C3B710 /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
