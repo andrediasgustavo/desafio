@@ -31,6 +31,7 @@ final class HomeViewController: UIViewController {
     }()
     
     var list: [ComicItem] = []
+    private var viewModel: HomeViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,13 @@ final class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setupView()
         getData()
+    }
+    
+    public init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
