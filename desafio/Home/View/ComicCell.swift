@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class ComicCell: UITableViewCell {
     
@@ -97,11 +98,9 @@ final class ComicCell: UITableViewCell {
         self.comicImage.backgroundColor = .gray.withAlphaComponent(0.5)
         self.comicImage.image = nil
         if let path = item.imagePath, let url = URL(string: path) {
-            downloadImage(from: url, completion: { image in
-                DispatchQueue.main.async {
-                    self.comicImage.image = image
-                }
-            })
+            DispatchQueue.main.async {
+                self.configureImage(url: url)
+            }
         }
         
         self.titleLabel.text = item.title
@@ -110,22 +109,17 @@ final class ComicCell: UITableViewCell {
 }
 
 extension ComicCell {
-    func downloadImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Error downloading image: \(error.localizedDescription)")
-                completion(nil)
-                return
-            }
-            
-            guard let data = data, let image = UIImage(data: data) else {
-                completion(nil)
-                return
-            }
-            
-            completion(image)
-        }
-        
-        task.resume()
+    private func configureImage(url: URL) {
+        let processor = DownsamplingImageProcessor(size: self.comicImage.bounds.size)
+        KF.url(url)
+          .setProcessor(processor)
+          .loadDiskFileSynchronously()
+          .cacheMemoryOnly()
+          .fade(duration: 0.1)
+          .onSuccess { result in
+              self.reloadInputViews()
+          }
+          .onFailure { error in }
+          .set(to: self.comicImage)
     }
 }
