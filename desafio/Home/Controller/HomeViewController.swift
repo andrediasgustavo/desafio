@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import Combine
+import SwiftUI
 
 final class HomeViewController: BaseVC<HomeViewModel> {
     
@@ -27,6 +28,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         return label
     }()
     
+    private var errorView: UIView?
     var list: [ComicItem] = []
     
     private var subscriptions = Set<AnyCancellable>()
@@ -64,8 +66,8 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         }
         
         self.activityLoadIndicator.snp.makeConstraints { make in
-            make.height.equalTo(50)
-            make.width.equalTo(50)
+            make.height.equalTo(70)
+            make.width.equalTo(70)
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview()
         }
@@ -76,6 +78,11 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         
         vm.inputs.fetchMarvelComicsData()
         
+        vm.outputs.isLoading.sink { [weak self] isLoading in
+            self?.handleActivityIndicator(isLoading: isLoading)
+        }
+        .store(in: &subscriptions)
+
         vm.outputs.comicsList.sink { [weak self] list in
             self?.list = list
             self?.tableView.reloadData()
@@ -87,5 +94,50 @@ final class HomeViewController: BaseVC<HomeViewModel> {
             self?.view.layoutIfNeeded()
         }
         .store(in: &subscriptions)
+        
+        vm.outputs.error.sink { [weak self] error in
+            self?.handleErrorView(error: error)
+        }
+        .store(in: &subscriptions)
     }
+    
+    private func handleActivityIndicator(isLoading: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            if isLoading {
+                self?.errorView?.isHidden = true
+                self?.activityLoadIndicator.isHidden = false
+                self?.tableView.isHidden = true
+                self?.activityLoadIndicator.startAnimating()
+            } else {
+                self?.tableView.isHidden = false
+                self?.activityLoadIndicator.stopAnimating()
+                self?.activityLoadIndicator.isHidden = true
+                self?.view.layoutSubviews()
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    private func handleErrorView(error: String) {
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                let errorViewSwiftUI = UIHostingController(rootView: ErrorView(viewModel: self.viewModel, messageError: error))
+                self.errorView = errorViewSwiftUI.view
+                if let errorView = self.errorView {
+                    self.view.addSubview(errorView)
+                    errorView.isHidden = false
+                    self.tableView.isHidden = true
+                    self.errorView?.translatesAutoresizingMaskIntoConstraints = false
+
+                    self.errorView?.snp.makeConstraints { make in
+                        make.top.equalToSuperview()
+                        make.bottom.equalToSuperview()
+                        make.leading.equalToSuperview()
+                        make.trailing.equalToSuperview()
+                    }
+
+                    self.view.layoutSubviews()
+                }
+            }
+        }
 }

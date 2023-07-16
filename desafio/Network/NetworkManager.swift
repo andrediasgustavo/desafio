@@ -52,8 +52,8 @@ class NetworkManager: APIManagerInterface {
                 .sink(receiveCompletion: { completion in
                     if case let .failure(error) = completion {
                         switch error {
-                        case let decodingError as DecodingError:
-                            promise(.failure(decodingError))
+                        case let _ as DecodingError:
+                            promise(.failure(NetworkError.decodeError))
                         case let apiError as NetworkError:
                             promise(.failure(apiError))
                         default:
@@ -72,9 +72,7 @@ class NetworkManager: APIManagerInterface {
 
 enum NetworkError: Error, CustomStringConvertible {
     case invalidURL
-    
     case decodeError
-            
     case unexpected
                 
     public var description: String {

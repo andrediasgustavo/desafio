@@ -31,6 +31,7 @@ final class HomeViewModel: ObservableObject, HomeVMInterfaces {
     private var bottomLabelTextProperty = CurrentValueSubject<String, Never>("")
     
     func fetchMarvelComicsData() {
+        self.isLoadingProperty.send(true)
         self.apiRequest.getData(endpoint: MarvelEndpoint.fetchMarvelComics, type: MarvelComicsResponse.self)
             .sink { completion in
               switch completion {

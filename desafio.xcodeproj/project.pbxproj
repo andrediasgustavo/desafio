@@ -20,6 +20,7 @@
 		73695EFB2A6445BF001F4C8F /* HomeViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73695EFA2A6445BF001F4C8F /* HomeViewController+Datasource.swift */; };
 		73695EFE2A64470F001F4C8F /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73695EFD2A64470F001F4C8F /* BaseTableViewCell.swift */; };
 		73695F002A644A3D001F4C8F /* HomeViewModelInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73695EFF2A644A3D001F4C8F /* HomeViewModelInterface.swift */; };
+		73695F022A6457BC001F4C8F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73695F012A6457BC001F4C8F /* ErrorView.swift */; };
 		7385CE982A6314FE00475DD8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7385CE972A6314FE00475DD8 /* SnapKit */; };
 		7385CE9A2A631A5E00475DD8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE992A631A5E00475DD8 /* AppCoordinator.swift */; };
 		7385CE9D2A631A8200475DD8 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */; };
@@ -67,6 +68,7 @@
 		73695EFA2A6445BF001F4C8F /* HomeViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Datasource.swift"; sourceTree = "<group>"; };
 		73695EFD2A64470F001F4C8F /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		73695EFF2A644A3D001F4C8F /* HomeViewModelInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelInterface.swift; sourceTree = "<group>"; };
+		73695F012A6457BC001F4C8F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		7385CE992A631A5E00475DD8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		7385CE9E2A631B2200475DD8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				250BB5232A61B38D002C4113 /* ComicCell.swift */,
+				73695F012A6457BC001F4C8F /* ErrorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				7385CE9F2A631B2200475DD8 /* HomeViewModel.swift in Sources */,
 				25D16DB42A60B68D00B585E1 /* AppDelegate.swift in Sources */,
 				73DF500D2A635F8E00C3B710 /* MarvelEndpoint.swift in Sources */,
+				73695F022A6457BC001F4C8F /* ErrorView.swift in Sources */,
 				73DF50092A635F7300C3B710 /* NetworkManager.swift in Sources */,
 				250BB5242A61B38D002C4113 /* ComicCell.swift in Sources */,
 				250BB5222A61B355002C4113 /* ComicItem.swift in Sources */,
@@ -581,6 +585,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "desafio/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Marvel Comics";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -611,6 +616,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "desafio/Supporting Files/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Marvel Comics";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
