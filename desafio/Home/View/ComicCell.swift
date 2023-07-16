@@ -3,7 +3,7 @@ import SnapKit
 import Kingfisher
 
 final class ComicCell: BaseTableViewCell {
-    
+    // MARK: Properties
     lazy var comicImage: UIImageView = {
         let image = UIImageView(frame: .zero)
         image.contentMode = .scaleAspectFit
@@ -28,6 +28,7 @@ final class ComicCell: BaseTableViewCell {
         return label
     }()
 
+    // MARK: UITableView Methods
     override func prepareForReuse() {
         super.prepareForReuse()
         comicImage.image = nil
@@ -77,7 +78,10 @@ final class ComicCell: BaseTableViewCell {
             make.height.greaterThanOrEqualTo(80)
         }
     }
-    
+}
+
+extension ComicCell {
+    // MARK: Setup Methods
     func updateModel(item: ComicItem) {
         self.comicImage.backgroundColor = .gray.withAlphaComponent(0.5)
         self.comicImage.image = nil
@@ -90,9 +94,8 @@ final class ComicCell: BaseTableViewCell {
         self.titleLabel.text = item.title
         self.descriptionLabel.text = item.description
     }
-}
-
-extension ComicCell {
+    
+    // MARK: Helper Methods
     private func configureImage(url: URL) {
         let processor = DownsamplingImageProcessor(size: self.comicImage.bounds.size)
         KF.url(url)

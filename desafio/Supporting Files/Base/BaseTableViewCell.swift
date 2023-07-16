@@ -9,7 +9,7 @@ import UIKit
 
 open class BaseTableViewCell: UITableViewCell {
     
-    //MARK: required inits and methods
+    // MARK: required inits and methods
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setupView()

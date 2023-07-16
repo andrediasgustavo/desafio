@@ -5,6 +5,7 @@ import SwiftUI
 
 final class HomeViewController: BaseVC<HomeViewModel> {
     
+    // MARK: Properties
     private lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.showsVerticalScrollIndicator = false
@@ -30,9 +31,9 @@ final class HomeViewController: BaseVC<HomeViewModel> {
     
     private var errorView: UIView?
     var list: [ComicItem] = []
-    
     private var subscriptions = Set<AnyCancellable>()
     
+    // MARK: Life Cycle View Methods
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -73,6 +74,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         }
     }
     
+    // MARK: Bind method to HomeViewModel
     override func bind(to vm: HomeViewModel) {
         super.bind(to: vm)
         
@@ -101,6 +103,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         .store(in: &subscriptions)
     }
     
+    // MARK: Helper methods
     private func handleActivityIndicator(isLoading: Bool) {
         DispatchQueue.main.async { [weak self] in
             if isLoading {
@@ -119,25 +122,25 @@ final class HomeViewController: BaseVC<HomeViewModel> {
     }
     
     private func handleErrorView(error: String) {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                let errorViewSwiftUI = UIHostingController(rootView: ErrorView(viewModel: self.viewModel, messageError: error))
-                self.errorView = errorViewSwiftUI.view
-                if let errorView = self.errorView {
-                    self.view.addSubview(errorView)
-                    errorView.isHidden = false
-                    self.tableView.isHidden = true
-                    self.errorView?.translatesAutoresizingMaskIntoConstraints = false
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let errorViewSwiftUI = UIHostingController(rootView: ErrorView(viewModel: self.viewModel, messageError: error))
+            self.errorView = errorViewSwiftUI.view
+            if let errorView = self.errorView {
+                self.view.addSubview(errorView)
+                errorView.isHidden = false
+                self.tableView.isHidden = true
+                self.errorView?.translatesAutoresizingMaskIntoConstraints = false
 
-                    self.errorView?.snp.makeConstraints { make in
-                        make.top.equalToSuperview()
-                        make.bottom.equalToSuperview()
-                        make.leading.equalToSuperview()
-                        make.trailing.equalToSuperview()
-                    }
-
-                    self.view.layoutSubviews()
+                self.errorView?.snp.makeConstraints { make in
+                    make.top.equalToSuperview()
+                    make.bottom.equalToSuperview()
+                    make.leading.equalToSuperview()
+                    make.trailing.equalToSuperview()
                 }
+
+                self.view.layoutSubviews()
             }
         }
+    }
 }
