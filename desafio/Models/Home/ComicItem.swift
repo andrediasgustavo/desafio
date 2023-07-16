@@ -3,16 +3,12 @@ struct ComicItem {
     let description: String
     var imagePath: String?
     
-    init(_ item: [String: Any]?) {
-        self.title = item?["title"] as? String ?? "Sem titulo"
+    init(_ item: MarvelComicsResult) {
+        self.title = item.title
         
         self.imagePath = nil
-        if let thumbnail = item?["thumbnail"] as? [String: Any] {
-            if let path = thumbnail["path"] as? String , let pathExtension = thumbnail["extension"] as? String {
-                self.imagePath = "\(path).\(pathExtension)"
-            }
-        }
+        self.imagePath = "\(item.thumbnail.path).\(item.thumbnail.thumbnailExtension)"
         
-        self.description = item?["description"] as? String ?? "Sem descrição"
+        self.description = item.description ?? "Sem descrição"
     }
 }

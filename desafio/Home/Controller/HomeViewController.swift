@@ -1,5 +1,6 @@
 import UIKit
 import SnapKit
+import Combine
 
 final class HomeViewController: BaseVC<HomeViewModel> {
     
@@ -28,13 +29,15 @@ final class HomeViewController: BaseVC<HomeViewModel> {
     
     var list: [ComicItem] = []
     
+    private var cancellables = Set<AnyCancellable>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getData()
+        fetchMarvelComicsData()
     }
     
     override func setupView() {
@@ -71,15 +74,30 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         }
     }
     
-    func getData() {
-        fetchMarvelData { providedBy, comicList in
-            self.list = comicList
-            
-            DispatchQueue.main.async {
-                self.bottomLabel.text = providedBy
-                self.tableView.reloadData()
-            }
-        }
+    func fetchMarvelComicsData() {
+        NetworkManager.shared.getData(endpoint: MarvelEndpoint.fetchMarvelComics, type: MarvelComicsResponse.self)
+            .sink { completion in
+              switch completion {
+              case .failure(let err):
+                  print("Error is \(err.localizedDescription)")
+              case .finished:
+                  print("Finished")
+              }
+          }
+          receiveValue: { [weak self] response in
+              self?.bottomLabel.text = response.attributionText
+              
+              let list = response.data.results.map { value -> ComicItem in
+                  return ComicItem(value)
+              }
+              
+              self?.list = list
+              self?.tableView.reloadData()
+             
+              
+             
+          }
+          .store(in: &cancellables)
     }
 }
 
