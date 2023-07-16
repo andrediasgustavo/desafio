@@ -17,6 +17,8 @@
 		25D16DCB2A60B69100B585E1 /* desafioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DCA2A60B69100B585E1 /* desafioTests.swift */; };
 		25D16DD52A60B69100B585E1 /* desafioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DD42A60B69100B585E1 /* desafioUITests.swift */; };
 		25D16DD72A60B69100B585E1 /* desafioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DD62A60B69100B585E1 /* desafioUITestsLaunchTests.swift */; };
+		73695EFB2A6445BF001F4C8F /* HomeViewController+Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73695EFA2A6445BF001F4C8F /* HomeViewController+Datasource.swift */; };
+		73695EFE2A64470F001F4C8F /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73695EFD2A64470F001F4C8F /* BaseTableViewCell.swift */; };
 		7385CE982A6314FE00475DD8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7385CE972A6314FE00475DD8 /* SnapKit */; };
 		7385CE9A2A631A5E00475DD8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE992A631A5E00475DD8 /* AppCoordinator.swift */; };
 		7385CE9D2A631A8200475DD8 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */; };
@@ -61,6 +63,8 @@
 		25D16DD02A60B69100B585E1 /* desafioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = desafioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25D16DD42A60B69100B585E1 /* desafioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = desafioUITests.swift; sourceTree = "<group>"; };
 		25D16DD62A60B69100B585E1 /* desafioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = desafioUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		73695EFA2A6445BF001F4C8F /* HomeViewController+Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeViewController+Datasource.swift"; sourceTree = "<group>"; };
+		73695EFD2A64470F001F4C8F /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		7385CE992A631A5E00475DD8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		7385CE9E2A631B2200475DD8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -147,10 +151,20 @@
 			path = desafioUITests;
 			sourceTree = "<group>";
 		};
+		73695EFC2A6445F0001F4C8F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				73DF50062A633C7500C3B710 /* BaseVC.swift */,
+				73695EFD2A64470F001F4C8F /* BaseTableViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		7385CE8C2A6311F800475DD8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				25D16DB72A60B68D00B585E1 /* HomeViewController.swift */,
+				73695EFA2A6445BF001F4C8F /* HomeViewController+Datasource.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -193,7 +207,7 @@
 		7385CE922A63124200475DD8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				73DF50052A633C5F00C3B710 /* Helpers */,
+				73695EFC2A6445F0001F4C8F /* Base */,
 				25D16DBC2A60B69000B585E1 /* Assets.xcassets */,
 				25D16DC12A60B69000B585E1 /* Info.plist */,
 				25D16DBE2A60B69000B585E1 /* LaunchScreen.storyboard */,
@@ -236,14 +250,6 @@
 				7385CE9C2A631A8200475DD8 /* HomeCoordinator.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		73DF50052A633C5F00C3B710 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				73DF50062A633C7500C3B710 /* BaseVC.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -396,6 +402,8 @@
 				73DF500F2A63665500C3B710 /* MarvelComics.swift in Sources */,
 				7385CE9A2A631A5E00475DD8 /* AppCoordinator.swift in Sources */,
 				73DF500B2A635F7E00C3B710 /* Endpoint.swift in Sources */,
+				73695EFB2A6445BF001F4C8F /* HomeViewController+Datasource.swift in Sources */,
+				73695EFE2A64470F001F4C8F /* BaseTableViewCell.swift in Sources */,
 				73DF50072A633C7500C3B710 /* BaseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

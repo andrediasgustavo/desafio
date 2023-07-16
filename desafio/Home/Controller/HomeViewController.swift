@@ -100,22 +100,3 @@ final class HomeViewController: BaseVC<HomeViewModel> {
           .store(in: &cancellables)
     }
 }
-
-extension HomeViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.list.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return 130
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath) as! ComicCell
-
-        let comic = self.list[indexPath.row]
-        cell.updateModel(item: comic)
-        return cell
-    }
-}
-

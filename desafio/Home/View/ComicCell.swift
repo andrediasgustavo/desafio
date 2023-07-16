@@ -2,7 +2,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class ComicCell: UITableViewCell {
+final class ComicCell: BaseTableViewCell {
     
     lazy var comicImage: UIImageView = {
         let image = UIImageView(frame: .zero)
@@ -27,23 +27,7 @@ final class ComicCell: UITableViewCell {
         label.textColor = UIColor.black
         return label
     }()
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-        self.setupView()
-    }
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        self.setupView()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         comicImage.image = nil
@@ -51,7 +35,7 @@ final class ComicCell: UITableViewCell {
         descriptionLabel.text = ""
     }
     
-    private func setupView() {
+    override func setupView() {
         self.contentView.addSubview(comicImage)
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(descriptionLabel)
@@ -59,7 +43,7 @@ final class ComicCell: UITableViewCell {
         self.setupConstraints()
     }
     
-    private func setupConstraints() {
+    override func setupConstraints() {
         self.comicImage.translatesAutoresizingMaskIntoConstraints = false
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false

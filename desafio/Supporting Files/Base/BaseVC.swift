@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 open class BaseVC<VM>: UIViewController {
     // MARK: - Properties
     public var viewModel: VM
@@ -37,18 +36,16 @@ open class BaseVC<VM>: UIViewController {
     /// Base VC init
     /// - Parameters:
     ///   - vm: The View Model that the controller should use
-    ///   - log: Variable to enable or disable view's init and deinit logs
     public init(viewModel vm: VM) {
         self.viewModel = vm
         super.init(nibName: nil, bundle: nil)
-
     }
 
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     // MARK: - View Life Cycle
-
     open override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
@@ -63,7 +60,6 @@ open class BaseVC<VM>: UIViewController {
     }
 
     // MARK: - Private Methods
-
     /// Method called in `viewDidLoad`, used to add subviews or make any UI modifications.
     open func setupView() {
         
