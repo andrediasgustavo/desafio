@@ -17,7 +17,8 @@ final class HomeCoordinator: Coordinator {
     }
     
     func start() {
-        let homeViewModel = HomeViewModel()
+        let apiService = NetworkManager.shared
+        let homeViewModel = HomeViewModel(apiService: apiService)
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         self.navigationController.setViewControllers([homeViewController], animated: false)
     }

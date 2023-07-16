@@ -29,18 +29,14 @@ final class HomeViewController: BaseVC<HomeViewModel> {
     
     var list: [ComicItem] = []
     
-    private var cancellables = Set<AnyCancellable>()
+    private var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        fetchMarvelComicsData()
-    }
-    
     override func setupView() {
+        super.setupView()
         self.view.backgroundColor = .white
         self.view.addSubview(tableView)
         self.view.addSubview(bottomLabel)
@@ -50,6 +46,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
     }
        
     override func setupConstraints() {
+        super.setupConstraints()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         activityLoadIndicator.translatesAutoresizingMaskIntoConstraints = false
         bottomLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -74,29 +71,21 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         }
     }
     
-    func fetchMarvelComicsData() {
-        NetworkManager.shared.getData(endpoint: MarvelEndpoint.fetchMarvelComics, type: MarvelComicsResponse.self)
-            .sink { completion in
-              switch completion {
-              case .failure(let err):
-                  print("Error is \(err.localizedDescription)")
-              case .finished:
-                  print("Finished")
-              }
-          }
-          receiveValue: { [weak self] response in
-              self?.bottomLabel.text = response.attributionText
-              
-              let list = response.data.results.map { value -> ComicItem in
-                  return ComicItem(value)
-              }
-              
-              self?.list = list
-              self?.tableView.reloadData()
-             
-              
-             
-          }
-          .store(in: &cancellables)
+    override func bind(to vm: HomeViewModel) {
+        super.bind(to: vm)
+        
+        vm.inputs.fetchMarvelComicsData()
+        
+        vm.outputs.comicsList.sink { [weak self] list in
+            self?.list = list
+            self?.tableView.reloadData()
+        }
+        .store(in: &subscriptions)
+        
+        vm.outputs.bottomLabelText.sink { [weak self] bottomText in
+            self?.bottomLabel.text = bottomText
+            self?.view.layoutIfNeeded()
+        }
+        .store(in: &subscriptions)
     }
 }
