@@ -6,8 +6,9 @@ struct ComicItem {
     init(_ item: MarvelComicsResult) {
         self.title = item.title
         
-        self.imagePath = nil
-        self.imagePath = "\(item.thumbnail.path).\(item.thumbnail.thumbnailExtension)"
+        if let path = item.thumbnail.path, !path.isEmpty, let thumbExtension = item.thumbnail.thumbnailExtension, !thumbExtension.isEmpty {
+            self.imagePath = "\(path).\(thumbExtension)"
+        }
         
         self.description = item.description ?? "Sem descrição"
     }

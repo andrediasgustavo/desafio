@@ -33,8 +33,8 @@ struct MarvelComicsResult: Codable {
 
 // MARK: - Thumbnail
 struct MarvelComicsThumbnail: Codable {
-    let path: String
-    let thumbnailExtension: String
+    let path: String?
+    let thumbnailExtension: String?
 
     enum CodingKeys: String, CodingKey {
         case path

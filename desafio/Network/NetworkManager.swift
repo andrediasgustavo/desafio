@@ -8,7 +8,11 @@
 import Foundation
 import Combine
 
-class NetworkManager {
+protocol APIManagerInterface {
+    func getData<T: Codable>(endpoint: Endpoint, type: T.Type) -> Future<T, Error>
+}
+
+class NetworkManager: APIManagerInterface {
     
     static let shared = NetworkManager()
     
@@ -16,7 +20,7 @@ class NetworkManager {
     
     private var cancellables = Set<AnyCancellable>()
     
-    func getData<T: Decodable>(endpoint: Endpoint, type: T.Type) -> Future<T, Error> {
+    func getData<T: Codable>(endpoint: Endpoint, type: T.Type) -> Future<T, Error> {
         return Future<T, Error> { [weak self] promise in
             guard let self = self else {
                 promise(.failure(NetworkError.unexpected))
