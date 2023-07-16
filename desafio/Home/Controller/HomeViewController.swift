@@ -44,7 +44,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         self.view.addSubview(tableView)
         self.view.addSubview(bottomLabel)
         self.view.addSubview(activityLoadIndicator)
-        self.navigationItem.title = "Marvel Comics"
+        self.navigationItem.title = Constants.homeTitle
         self.setupConstraints()
     }
        

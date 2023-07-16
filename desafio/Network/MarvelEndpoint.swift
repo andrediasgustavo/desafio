@@ -13,21 +13,21 @@ enum MarvelEndpoint: Endpoint {
     var schema: String {
         switch self {
             default:
-                return "https"
+                return Constants.schema
         }
     }
     
     var baseURL: String {
         switch self {
             default:
-                return "gateway.marvel.com"
+                return Constants.baseURL
         }
     }
     
     var path: String {
         switch self {
             case .fetchMarvelComics:
-                return "/v1/public/comics"
+                return Constants.marvelComicsPath
         }
     }
     
@@ -45,7 +45,7 @@ enum MarvelEndpoint: Endpoint {
     var method: String  {
         switch self {
             default:
-                return "GET"
+                return Constants.method
         }
     }
     

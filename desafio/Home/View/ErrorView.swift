@@ -19,7 +19,7 @@ struct ErrorView: View {
                 .foregroundColor(.red)
                 .padding()
             
-            Text("Um erro ocorreu")
+            Text(Constants.errorViewTitle)
                 .font(.title)
                 .foregroundColor(.primary)
                 .padding(.top, 16)
@@ -32,7 +32,7 @@ struct ErrorView: View {
             Button {
                 viewModel.inputs.fetchMarvelComicsData()
             } label: {
-                Text("Tente novamente")
+                Text(Constants.errorViewBtntitle)
                     .font(.body)
                     .frame(minWidth: 250)
                     .frame(height: 50, alignment: .center)

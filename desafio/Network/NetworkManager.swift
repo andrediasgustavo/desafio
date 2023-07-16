@@ -78,11 +78,11 @@ enum NetworkError: Error, CustomStringConvertible {
     public var description: String {
         switch self {
         case .invalidURL:
-            return "A url não é valida."
+            return Constants.invalidURL
         case .decodeError:
-            return "Algo de errado ocorreu no processo de decode."
+            return Constants.decodeError
         case .unexpected:
-            return "Um erro inesperado aconteceu."
+            return Constants.unexpectedError
         }
     }
 }

@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  desafio
+
+  Created by Andre Dias on 16/07/23.
+  
+*/
+
+"invalid_URL" = "A url é inválida";
+"decode_Error" = "Algo de errado ocorreu no processo de decode.";
+"no_Internet" = "Sem conexão de internet";
+"unexpected_Error" = "Um erro inesperado aconteceu.";
+
+
+"home_Title" = "Marvel Comics";
+"error_View_Title" = "Um erro ocorreu";
+"error_View_Btn_title" = "Tente novamente";
