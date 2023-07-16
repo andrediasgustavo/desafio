@@ -15,3 +15,5 @@
 "home_Title" = "Marvel Comics";
 "error_View_Title" = "Une erreur s'est produite";
 "error_View_Btn_title" = "Réessayez";
+"no_title_cell" = "Sans titre";
+"no_description_cell" = "Sans description";

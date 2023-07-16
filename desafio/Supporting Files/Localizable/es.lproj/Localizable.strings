@@ -15,3 +15,5 @@
 "home_Title" = "Cómics de Marvel";
 "error_View_Title" = "Ocurrió un error";
 "error_View_Btn_title" = "Inténtelo de nuevo";
+"no_title_cell" = "Sin título";
+"no_description_cell" = "Sin descripción";

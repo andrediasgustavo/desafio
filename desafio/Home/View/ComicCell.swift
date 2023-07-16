@@ -12,10 +12,12 @@ final class ComicCell: BaseTableViewCell {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
-        label.font = .systemFont(ofSize: 14.0)
+        label.font = .systemFont(ofSize: 14.0, weight: .bold)
         label.textAlignment = .left
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.textColor = UIColor.black
+        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
         return label
     }()
     
@@ -25,6 +27,8 @@ final class ComicCell: BaseTableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = UIColor.black
+        label.lineBreakMode = .byWordWrapping
+        label.sizeToFit()
         return label
     }()
 
@@ -49,33 +53,27 @@ final class ComicCell: BaseTableViewCell {
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
         self.descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        let maxWidthContainer: CGFloat = 129
-        let maxHeightContainer: CGFloat = 100
-
-        
         self.comicImage.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(8.0)
-            make.top.equalToSuperview().offset(8.0)
-            make.bottom.equalToSuperview().inset(8.0)
-            make.width.equalTo(contentView.snp.height).multipliedBy(maxWidthContainer/maxHeightContainer)
-            make.width.height.equalToSuperview().priority(.high)
-            make.height.equalTo(maxHeightContainer)
+            make.top.equalToSuperview().offset(16.0)
+            make.bottom.equalToSuperview().inset(16.0)
+            make.height.equalTo(120)
+            make.width.equalTo(130)
         }
         
         self.titleLabel.snp.makeConstraints { make in
             make.top.equalTo(self.comicImage.snp.top)
-            make.height.lessThanOrEqualTo(35)
+            make.height.greaterThanOrEqualTo(10)
             make.leading.equalTo(self.comicImage.snp.trailing).offset(8.0)
-            make.right.equalTo(self).offset(-8.0)
-           
+            make.trailing.equalToSuperview().offset(-8.0)
         }
         
         self.descriptionLabel.snp.makeConstraints { make in
             make.leading.equalTo(self.comicImage.snp.trailing).offset(8.0)
-            make.right.equalTo(self).offset(-8.0)
+            make.trailing.equalToSuperview().offset(-8.0)
             make.top.equalTo(self.titleLabel.snp.bottom).offset(8.0)
-            make.bottom.equalToSuperview().inset(8.0)
-            make.height.greaterThanOrEqualTo(80)
+            make.bottom.equalToSuperview().inset(16.0)
+            make.height.greaterThanOrEqualTo(60)
         }
     }
 }
@@ -83,16 +81,16 @@ final class ComicCell: BaseTableViewCell {
 extension ComicCell {
     // MARK: Setup Methods
     func updateModel(item: ComicItem) {
-        self.comicImage.backgroundColor = .gray.withAlphaComponent(0.5)
         self.comicImage.image = nil
         if let path = item.imagePath, let url = URL(string: path) {
             DispatchQueue.main.async {
                 self.configureImage(url: url)
             }
+        } else {
+            self.comicImage.backgroundColor = .gray.withAlphaComponent(0.5)
         }
-        
-        self.titleLabel.text = item.title
-        self.descriptionLabel.text = item.description
+        self.titleLabel.text = !item.title.isEmpty ? item.title : Constants.noTitleCell
+        self.descriptionLabel.text = !item.description.isEmpty ? item.description : Constants.noDescriptionCell
     }
     
     // MARK: Helper Methods

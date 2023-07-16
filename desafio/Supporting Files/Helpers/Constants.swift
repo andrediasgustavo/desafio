@@ -24,4 +24,10 @@ struct Constants {
     static let homeTitle = NSLocalizedString("home_Title", comment: "")
     static let errorViewTitle = NSLocalizedString("error_View_Title", comment: "")
     static let errorViewBtntitle = NSLocalizedString("error_View_Btn_title", comment: "")
+    static let noTitleCell = NSLocalizedString("no_title_cell", comment: "")
+    static let noDescriptionCell = NSLocalizedString("no_description_cell", comment: "")
+    
+    //MARK: General
+    static let comicCellReuseIdentfier = "ComicCell"
+    
 }

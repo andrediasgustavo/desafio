@@ -13,11 +13,11 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-         return 130
+         return 150
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ComicCell", for: indexPath) as! ComicCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.comicCellReuseIdentfier, for: indexPath) as! ComicCell
 
         let comic = self.list[indexPath.row]
         cell.updateModel(item: comic)

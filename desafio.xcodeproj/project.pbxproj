@@ -14,7 +14,6 @@
 		25D16DB82A60B68D00B585E1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DB72A60B68D00B585E1 /* HomeViewController.swift */; };
 		25D16DBD2A60B69000B585E1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25D16DBC2A60B69000B585E1 /* Assets.xcassets */; };
 		25D16DC02A60B69000B585E1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25D16DBE2A60B69000B585E1 /* LaunchScreen.storyboard */; };
-		25D16DCB2A60B69100B585E1 /* desafioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DCA2A60B69100B585E1 /* desafioTests.swift */; };
 		25D16DD52A60B69100B585E1 /* desafioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DD42A60B69100B585E1 /* desafioUITests.swift */; };
 		25D16DD72A60B69100B585E1 /* desafioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D16DD62A60B69100B585E1 /* desafioUITestsLaunchTests.swift */; };
 		7360DB3A2A6460700044E3AD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360DB392A6460700044E3AD /* Constants.swift */; };
@@ -33,6 +32,9 @@
 		73DF500D2A635F8E00C3B710 /* MarvelEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF500C2A635F8E00C3B710 /* MarvelEndpoint.swift */; };
 		73DF500F2A63665500C3B710 /* MarvelComics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF500E2A63665500C3B710 /* MarvelComics.swift */; };
 		73EC049E2A647A2B00A4C8F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 73EC04A02A647A2B00A4C8F9 /* Localizable.strings */; };
+		73EC04A52A647F8700A4C8F9 /* HomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC04A42A647F8700A4C8F9 /* HomeViewControllerTests.swift */; };
+		73EC04A92A647FDD00A4C8F9 /* MockAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC04A82A647FDD00A4C8F9 /* MockAPIService.swift */; };
+		73EC04AC2A64811100A4C8F9 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EC04AB2A64811100A4C8F9 /* HomeViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +65,6 @@
 		25D16DBF2A60B69000B585E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		25D16DC12A60B69000B585E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25D16DC62A60B69100B585E1 /* desafioTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = desafioTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		25D16DCA2A60B69100B585E1 /* desafioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = desafioTests.swift; sourceTree = "<group>"; };
 		25D16DD02A60B69100B585E1 /* desafioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = desafioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		25D16DD42A60B69100B585E1 /* desafioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = desafioUITests.swift; sourceTree = "<group>"; };
 		25D16DD62A60B69100B585E1 /* desafioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = desafioUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -88,6 +89,9 @@
 		73EC04A12A647A4100A4C8F9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		73EC04A22A647A4200A4C8F9 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		73EC04A32A647A4B00A4C8F9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		73EC04A42A647F8700A4C8F9 /* HomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerTests.swift; sourceTree = "<group>"; };
+		73EC04A82A647FDD00A4C8F9 /* MockAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIService.swift; sourceTree = "<group>"; };
+		73EC04AB2A64811100A4C8F9 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +156,8 @@
 		25D16DC92A60B69100B585E1 /* desafioTests */ = {
 			isa = PBXGroup;
 			children = (
-				25D16DCA2A60B69100B585E1 /* desafioTests.swift */,
+				73EC04AA2A6480F700A4C8F9 /* Home */,
+				73EC04A62A647FC200A4C8F9 /* Helpers */,
 			);
 			path = desafioTests;
 			sourceTree = "<group>";
@@ -285,6 +290,31 @@
 				73EC04A02A647A2B00A4C8F9 /* Localizable.strings */,
 			);
 			path = Localizable;
+			sourceTree = "<group>";
+		};
+		73EC04A62A647FC200A4C8F9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				73EC04A72A647FCB00A4C8F9 /* Mocks */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		73EC04A72A647FCB00A4C8F9 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				73EC04A82A647FDD00A4C8F9 /* MockAPIService.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		73EC04AA2A6480F700A4C8F9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				73EC04A42A647F8700A4C8F9 /* HomeViewControllerTests.swift */,
+				73EC04AB2A64811100A4C8F9 /* HomeViewModelTests.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,7 +484,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25D16DCB2A60B69100B585E1 /* desafioTests.swift in Sources */,
+				73EC04A92A647FDD00A4C8F9 /* MockAPIService.swift in Sources */,
+				73EC04A52A647F8700A4C8F9 /* HomeViewControllerTests.swift in Sources */,
+				73EC04AC2A64811100A4C8F9 /* HomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

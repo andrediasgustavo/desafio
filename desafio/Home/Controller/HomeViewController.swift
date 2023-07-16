@@ -15,7 +15,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         view.dataSource = self
         view.separatorStyle = .singleLine
         view.backgroundColor = .white
-        view.register(ComicCell.self, forCellReuseIdentifier: "ComicCell")
+        view.register(ComicCell.self, forCellReuseIdentifier: Constants.comicCellReuseIdentfier)
         return view
     }()
     
@@ -57,7 +57,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         self.tableView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(16.0)
             make.leading.equalToSuperview().offset(16.0)
-            make.trailing.equalToSuperview().offset(16.0)
+            make.trailing.equalToSuperview().inset(16.0)
             make.bottom.equalToSuperview().inset(40.0)
         }
         
