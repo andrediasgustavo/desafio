@@ -28,7 +28,7 @@ class HomeViewControllerTests: XCTestCase {
         self.homeVC = nil
     }
     
-    func test_GetFirstRow() {
+    func testGetFirstRow() {
         let tableView = self.homeVC.tableView
         let indexPath0 = IndexPath(item: 0, section: 0)
         tableView.reloadData()
@@ -40,12 +40,26 @@ class HomeViewControllerTests: XCTestCase {
         XCTAssertNotNil(firstCell)
     }
     
-    func test_NumbersOfComicsItems() {
+    func testNumbersOfComicsItems() {
         XCTAssertEqual(self.homeVC.comicsList.count, 3)
     }
     
-    func test_NumberOFRowsAtSectionZero() {
+    func testNumberOFRowsAtSectionZero() {
         XCTAssertEqual(self.homeVC.tableView.numberOfRows(inSection: 0), self.homeVC.comicsList.count)
+    }
+    
+    func testErrorView() {
+        let navigationController = UINavigationController()
+        let apiService = MockMarvelAPIService(returnErrorResponse: true)
+        let viewModel = HomeViewModel(apiService: apiService)
+        self.homeVC = HomeViewController(viewModel: viewModel)
+        navigationController.setViewControllers([self.homeVC], animated: false)
+        _ = self.homeVC.view
+    
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            XCTAssertNotNil(self.homeVC.errorView)
+            XCTAssertEqual(self.homeVC.errorView?.isHidden, false)
+        }
     }
     
 }

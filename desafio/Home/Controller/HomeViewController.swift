@@ -15,6 +15,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         view.dataSource = self
         view.separatorStyle = .singleLine
         view.backgroundColor = .white
+        view.accessibilityIdentifier = "tableViewIdentifier"
         view.register(ComicCell.self, forCellReuseIdentifier: Constants.comicCellReuseIdentfier)
         return view
     }()
@@ -29,7 +30,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         return label
     }()
     
-    private var errorView: UIView?
+    var errorView: UIView?
     var comicsList: [ComicItem] = []
     private var subscriptions = Set<AnyCancellable>()
     

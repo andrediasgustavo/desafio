@@ -56,7 +56,7 @@ class HomeViewModelTests: XCTestCase {
         self.homeViewModel = .init(apiService: mockAPIService)
         homeViewModel.inputs.fetchMarvelComicsData()
         let comicsList = try awaitPublisher(homeViewModel.comicsList)
-        let error = try awaitPublisher(homeViewModel.error, timeout: 30)
+        let error = try awaitPublisher(homeViewModel.error)
         XCTAssertEqual(comicsList.count, 0)
         XCTAssertNotNil(error)
     }
