@@ -20,7 +20,7 @@ enum MarvelEndpoint: Endpoint {
     var baseURL: String {
         switch self {
             default:
-                return Constants.baseURL
+                return try! Configuration.value(for: "BASE_URL")
         }
     }
     
@@ -31,14 +31,24 @@ enum MarvelEndpoint: Endpoint {
         }
     }
     
+    static var apiKey: String {
+        return try! Configuration.value(for: "API_KEY")
+    }
+    
+    static var timeStamp: String {
+        return try! Configuration.value(for: "TIMESTAMP")
+    }
+    
+    static var hashKey: String {
+        return try! Configuration.value(for: "HASH_KEY")
+    }
+    
     var parameters: [URLQueryItem] {
-        let apiKey = "b7e14bab409c70a5c4e7c2b319c09d7b"
-        
         switch self {
             case .fetchMarvelComics:
-            return [URLQueryItem(name: "apikey", value: apiKey),
-                    URLQueryItem(name: "ts", value: "1682982412"),
-                    URLQueryItem(name: "hash", value: "3482f01e9bf207a437a4b621c91339ad")]
+            return [URLQueryItem(name: "apikey", value: MarvelEndpoint.apiKey),
+                    URLQueryItem(name: "ts", value: MarvelEndpoint.timeStamp),
+                    URLQueryItem(name: "hash", value: MarvelEndpoint.hashKey)]
         }
     }
     
@@ -48,7 +58,4 @@ enum MarvelEndpoint: Endpoint {
                 return Constants.method
         }
     }
-    
-    
 }
-

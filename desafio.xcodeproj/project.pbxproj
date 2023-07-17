@@ -26,6 +26,7 @@
 		7385CE9F2A631B2200475DD8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7385CE9E2A631B2200475DD8 /* HomeViewModel.swift */; };
 		73CD4A352A6590330037FB54 /* MarvelAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD4A342A6590330037FB54 /* MarvelAPIService.swift */; };
 		73CD4A372A65AEB10037FB54 /* XCTestCase+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD4A362A65AEB10037FB54 /* XCTestCase+Extensions.swift */; };
+		73CD4A402A65E53F0037FB54 /* ConfigHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD4A3F2A65E53F0037FB54 /* ConfigHelper.swift */; };
 		73DF50042A6339B200C3B710 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 73DF50032A6339B200C3B710 /* Kingfisher */; };
 		73DF50072A633C7500C3B710 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF50062A633C7500C3B710 /* BaseVC.swift */; };
 		73DF50092A635F7300C3B710 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73DF50082A635F7300C3B710 /* NetworkManager.swift */; };
@@ -78,6 +79,8 @@
 		7385CE9E2A631B2200475DD8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		73CD4A342A6590330037FB54 /* MarvelAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIService.swift; sourceTree = "<group>"; };
 		73CD4A362A65AEB10037FB54 /* XCTestCase+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+Extensions.swift"; sourceTree = "<group>"; };
+		73CD4A3E2A65DBA20037FB54 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		73CD4A3F2A65E53F0037FB54 /* ConfigHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigHelper.swift; sourceTree = "<group>"; };
 		73DF50062A633C7500C3B710 /* BaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVC.swift; sourceTree = "<group>"; };
 		73DF50082A635F7300C3B710 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		73DF500A2A635F7E00C3B710 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 				7385CE932A63127F00475DD8 /* Models */,
 				7385CE952A63128E00475DD8 /* Network */,
 				7385CE922A63124200475DD8 /* Supporting Files */,
+				73CD4A3E2A65DBA20037FB54 /* Config.xcconfig */,
 			);
 			path = desafio;
 			sourceTree = "<group>";
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				7360DB392A6460700044E3AD /* Constants.swift */,
+				73CD4A3F2A65E53F0037FB54 /* ConfigHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -465,6 +470,7 @@
 				25D16DB82A60B68D00B585E1 /* HomeViewController.swift in Sources */,
 				7385CE9F2A631B2200475DD8 /* HomeViewModel.swift in Sources */,
 				25D16DB42A60B68D00B585E1 /* AppDelegate.swift in Sources */,
+				73CD4A402A65E53F0037FB54 /* ConfigHelper.swift in Sources */,
 				73DF500D2A635F8E00C3B710 /* MarvelEndpoint.swift in Sources */,
 				73695F022A6457BC001F4C8F /* ErrorView.swift in Sources */,
 				73DF50092A635F7300C3B710 /* NetworkManager.swift in Sources */,
@@ -596,7 +602,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -651,7 +657,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -663,6 +669,7 @@
 		};
 		25D16DDB2A60B69100B585E1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73CD4A3E2A65DBA20037FB54 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -694,6 +701,7 @@
 		};
 		25D16DDC2A60B69100B585E1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73CD4A3E2A65DBA20037FB54 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
