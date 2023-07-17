@@ -76,6 +76,9 @@ open class BaseVC<VM>: UIViewController {
     open func updateView() {}
 
     // MARK: - View customization
+    open override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     open func setupAppearence() {
         // TITLE STYLING

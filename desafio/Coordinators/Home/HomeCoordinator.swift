@@ -17,7 +17,7 @@ final class HomeCoordinator: Coordinator {
     }
     
     func start() {
-        let apiService = NetworkManager.shared
+        let apiService = MarvelAPIService(serviceManager: NetworkManager.shared)
         let homeViewModel = HomeViewModel(apiService: apiService)
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         self.navigationController.setViewControllers([homeViewController], animated: false)

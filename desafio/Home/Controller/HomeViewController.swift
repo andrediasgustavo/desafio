@@ -6,7 +6,7 @@ import SwiftUI
 final class HomeViewController: BaseVC<HomeViewModel> {
     
     // MARK: Properties
-    private lazy var tableView: UITableView = {
+    lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero)
         view.showsVerticalScrollIndicator = false
         view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -30,7 +30,7 @@ final class HomeViewController: BaseVC<HomeViewModel> {
     }()
     
     private var errorView: UIView?
-    var list: [ComicItem] = []
+    var comicsList: [ComicItem] = []
     private var subscriptions = Set<AnyCancellable>()
     
     // MARK: Life Cycle View Methods
@@ -85,8 +85,8 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         }
         .store(in: &subscriptions)
 
-        vm.outputs.comicsList.sink { [weak self] list in
-            self?.list = list
+        vm.outputs.comicsList.sink { [weak self] comicsList in
+            self?.comicsList = comicsList
             self?.tableView.reloadData()
         }
         .store(in: &subscriptions)
@@ -98,7 +98,9 @@ final class HomeViewController: BaseVC<HomeViewModel> {
         .store(in: &subscriptions)
         
         vm.outputs.error.sink { [weak self] error in
-            self?.handleErrorView(error: error)
+            if let error = error {
+                self?.handleErrorView(error: error)
+            }
         }
         .store(in: &subscriptions)
     }

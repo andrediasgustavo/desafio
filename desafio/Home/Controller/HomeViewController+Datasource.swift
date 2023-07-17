@@ -9,7 +9,7 @@ import UIKit
 extension HomeViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.list.count
+        return self.comicsList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -19,7 +19,7 @@ extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.comicCellReuseIdentfier, for: indexPath) as! ComicCell
 
-        let comic = self.list[indexPath.row]
+        let comic = self.comicsList[indexPath.row]
         cell.updateModel(item: comic)
         return cell
     }

@@ -11,9 +11,9 @@ import Combine
 final class HomeViewModel: ObservableObject, HomeVMInterfaces {
     
     private var subscriptions = Set<AnyCancellable>()
-    private var apiRequest: APIManagerInterface
+    private var apiRequest: MarvelAPIServiceInterface
     
-    init(apiService: APIManagerInterface) {
+    init(apiService: MarvelAPIServiceInterface) {
         self.apiRequest = apiService
         self.isLoading = self.isLoadingProperty.eraseToAnyPublisher()
         self.comicsList = self.comicsListProperty.eraseToAnyPublisher()
@@ -26,20 +26,25 @@ final class HomeViewModel: ObservableObject, HomeVMInterfaces {
     
     // MARK: Input Methods and Variables
     private var isLoadingProperty = CurrentValueSubject<Bool, Never>(false)
-    private var errorProperty = PassthroughSubject<String, Never>()
+    private var errorProperty = CurrentValueSubject<String?, Never>(nil)
     private var comicsListProperty = CurrentValueSubject<[ComicItem], Never>([])
     private var bottomLabelTextProperty = CurrentValueSubject<String, Never>("")
     
     func fetchMarvelComicsData() {
         self.isLoadingProperty.send(true)
-        self.apiRequest.getData(endpoint: MarvelEndpoint.fetchMarvelComics, type: MarvelComicsResponse.self)
+        self.apiRequest.fetchMarvelComicsData()
             .sink { completion in
               switch completion {
               case .failure(let err):
-                  self.errorProperty.send(err.localizedDescription)
+                  if let err = err as? NetworkError {
+                      self.errorProperty.send(err.description)
+                  } else {
+                      self.errorProperty.send(err.localizedDescription)
+                  }
                   self.isLoadingProperty.send(false)
               case .finished:
                   self.isLoadingProperty.send(false)
+             
               }
           }
           receiveValue: { [weak self] response in
@@ -60,7 +65,7 @@ final class HomeViewModel: ObservableObject, HomeVMInterfaces {
     }
     
     // MARK: Output Methods and Variables
-    internal var error: AnyPublisher<String, Never>!
+    internal var error: AnyPublisher<String?, Never>!
     internal var isLoading: AnyPublisher<Bool, Never>!
     internal var comicsList: AnyPublisher<[ComicItem], Never>!
     internal var bottomLabelText: AnyPublisher<String, Never>!

@@ -13,7 +13,7 @@ protocol HomeVMInput {
 }
 
 protocol HomeVMOutput {
-    var error: AnyPublisher<String, Never>! { get }
+    var error: AnyPublisher<String?, Never>! { get }
     var isLoading: AnyPublisher<Bool, Never>! { get }
     var comicsList: AnyPublisher<[ComicItem], Never>! { get }
     var bottomLabelText: AnyPublisher<String, Never>! { get }

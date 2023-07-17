@@ -8,11 +8,7 @@
 import Foundation
 import Combine
 
-protocol APIManagerInterface {
-    func getData<T: Codable>(endpoint: Endpoint, type: T.Type) -> Future<T, Error>
-}
-
-class NetworkManager: APIManagerInterface {
+class NetworkManager {
     
     static let shared = NetworkManager()
     
@@ -52,7 +48,7 @@ class NetworkManager: APIManagerInterface {
                 .sink(receiveCompletion: { completion in
                     if case let .failure(error) = completion {
                         switch error {
-                        case let _ as DecodingError:
+                        case _ as DecodingError:
                             promise(.failure(NetworkError.decodeError))
                         case let apiError as NetworkError:
                             promise(.failure(apiError))

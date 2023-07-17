@@ -47,7 +47,7 @@ struct ErrorView: View {
 
 struct ErrorView_Previews: PreviewProvider {
     static var previews: some View {
-        ErrorView(viewModel: HomeViewModel(apiService: NetworkManager.shared),
+        ErrorView(viewModel: HomeViewModel(apiService: MarvelAPIService(serviceManager: NetworkManager.shared)),
                   messageError: NetworkError.decodeError.localizedDescription)
     }
 }
